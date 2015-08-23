@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>League DevelAPment</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    <style>.stat .fa-caret-up,.reveal-modal .fa-caret-up{color:green;}.reveal-modal .fa-caret-down,.stat .fa-caret-down{color:red;}.brd{border: #999 1px solid;}.tab{cursor:pointer;margin:-1px;padding: 15px;font-size:1.5em;}.stat{padding-bottom:30px;}.rate{padding-left:70px;padding-top:16px;}.stat img{cursor:pointer;position:absolute;padding:10px 0px;}.items img{cursor:pointer;margin:20px;}.champs img{margin:20px;width:64px;heigth:64px;cursor:pointer; }</style>
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    
+    <div class="bg">
+      <img src="img/bg2.png" />
+      <div class="bg-shadow">&nbsp;</div>
+    </div>
+    
+    <div class="row">
+      <div class="right" style="padding:25px 50px"><a href="about.html">About</a></div>
+      <div class="large-8 columns">
+        <h1><a href="index.html">League DevelAPment</a></h1>
+      </div>
+    </div>
+    
+      <div class="row main">
+      <div class=" large-12 columns">
+        <h2>About</h2>
+        <h4>Data</h4>
+        <p>As data source 59,650 normal and ranked matches from the regions EUW, NA and KR (patch 5.11) have been compared to 59,588 normal and ranked matches from EUW, NA and KR (patch 5.14).</p>
+        <h4>Simplify</h4>
+        <p>To ensure the data were more consistent the following simplification were executed:
+          <ul>
+            <li>All boot enchantments got removed</li>
+            <li>All runeglaive enchantments were moved to Ranger's Trailblazer</li>
+            <li>Archangel's staff was upgraded to Seraph's Embrace</li>
+            <li>Banner of Command and Locket of the iron Solari were downgraded to Aegis of the Legion</li>
+            <li>Quicksilver Sash was upgraded to Mercurial Scimitar</li>
+          </ul>
+        </p>
+        <h4>Analysis</h4>
+        <p>For the analysis the following categories were declared as important:
+          <ul>
+            <li>Winrate and Popularity of Mages</li>
+            <li>Winrate and Popularity of AP items on Mages</li>
+            <li>Winrate and Popularity of boots on Mages</li>
+            <li>Winrate and Popularity of AP items, MR items and boots on Mages</li>
+            <li>Damage per Second done with AP items</li>
+          </ul>
+          Mages are all of the <em>Champions</em> listed on the main page if they built at least one item listed under <em>AP items</em> on the main page.
+        </p>
+        <h4>Files</h4>
+        <p>All files used for analyzing can be found in the following GitHub repository: <a href="https://github.com/BlobbyBob/LeagueDevelAPment">https://github.com/BlobbyBob/LeagueDevelAPment</a></p>
+      </div>
+      </div>
+      
+      <div class="row">
+      
+        <div class="large-12 columns">
+          <small>League DevelAPment isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends &copy; Riot Games, Inc.</small>
+        </div>
+      
+      </div>
+      
+  <div class='reveal-modal' id='infoModal' data-reveal>
+    Hello
+  </div>
+    
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/jquery.tablesorter.min.js"></script>
+    <script>
+      $(document).foundation();
+      $(function () {
+        $(".tab").on("tabs.e", function(){$(this).next().slideToggle();if ($(this).children("span").hasClass("fa-caret-down")) $(this).children("span").removeClass("fa-caret-down").addClass("fa-caret-right"); else $(this).children("span").addClass("fa-caret-down").removeClass("fa-caret-right"); });
+        $("#items, #champs").trigger("tabs.e").click(function(){$(this).trigger("tabs.e")});
+        $(".tab-pop").click(function(e){e.preventDefault();$(".tab-pop").trigger("tabs.e");$(".tab-good").trigger("tabs.e");});
+        $(".tab-good").click(function(e){e.preventDefault();$(".tab-pop").trigger("tabs.e");$(".tab-good").trigger("tabs.e");});
+        $(".items img, .champs img, .row.main img").click(function(){$("#infoModal").foundation('reveal', "open", "http://www.google.de")});
+      });
+    </script>
+  </body>
+</html>
