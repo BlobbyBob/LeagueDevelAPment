@@ -51,7 +51,6 @@ if (array_key_exists($a, $poprateI)) {
   
   echo "<h2><u>$items[$a]</u></h2>";
   
-  echo "<hr />";
   echo "<div>";
   echo "<h3>Stats:</h3>";
   
@@ -68,7 +67,6 @@ if (array_key_exists($a, $poprateI)) {
   
   echo "<h2><u>$items[$a]</u></h2>";
   
-  echo "<hr />";
   echo "<div>";
   echo "<h3>Stats:</h3>";
   
@@ -85,7 +83,6 @@ if (array_key_exists($a, $poprateI)) {
   
   echo "<h2><u>$items[$a]</u></h2>";
   
-  echo "<hr />";
   echo "<div>";
   echo "<h3>Stats:</h3>";
   
