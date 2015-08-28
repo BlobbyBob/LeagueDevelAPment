@@ -43,8 +43,9 @@ $dpsMR = Array(3105=>"0.2&nbsp;<span class='fa fa-caret-right'></span>&nbsp;0.2"
 if (is_numeric($a)) {
 
 if (array_key_exists($a, $items)) {
-  
-  echo "<script>$('.reveal-modal').css('background', \"rgb(13,20,21)\");</script>\r\n";
+if (array_key_exists($a, $poprateI)) {
+
+  echo "<script>$('.reveal-modal').css('background', \"url('http://na.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg') #222 no-repeat\");</script>\r\n";
     
   echo "<div class='right'><img src='http://ddragon.leagueoflegends.com/cdn/5.7.1/img/item/$a.png' /></div>";
   
@@ -54,10 +55,46 @@ if (array_key_exists($a, $items)) {
   echo "<div>";
   echo "<h3>Stats:</h3>";
   
-  echo "<big>Popularity</big>: $poprateI[$a]<br>";
-  echo "<big>Winrate</big>: $poprateI[$a]<br>";
-  echo "<big>Average DPS</big>: $poprateI[$a]<br>";
+  echo "<div class='blackbox'><div class='title'>Popularity:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$poprateI[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Winrate:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$winrateI[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Average DPS:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$dpsI[$a]}</div></div>";
   echo "</div>";
+  
+} else if (array_key_exists($a, $poprateMR)) {
+
+  echo "<script>$('.reveal-modal').css('background', \"url('http://na.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg') #222 no-repeat\");</script>\r\n";
+    
+  echo "<div class='right'><img src='http://ddragon.leagueoflegends.com/cdn/5.7.1/img/item/$a.png' /></div>";
+  
+  echo "<h2><u>$items[$a]</u></h2>";
+  
+  echo "<hr />";
+  echo "<div>";
+  echo "<h3>Stats:</h3>";
+  
+  echo "<div class='blackbox'><div class='title'>Popularity:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$poprateMR[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Winrate:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$winrateMR[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Average DPS:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$dpsMR[$a]}</div></div>";
+  echo "</div>";
+  
+} else if (array_key_exists($a, $poprateB)) {
+
+  echo "<script>$('.reveal-modal').css('background', \"url('http://na.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg') #222 no-repeat\");</script>\r\n";
+    
+  echo "<div class='right'><img src='http://ddragon.leagueoflegends.com/cdn/5.7.1/img/item/$a.png' /></div>";
+  
+  echo "<h2><u>$items[$a]</u></h2>";
+  
+  echo "<hr />";
+  echo "<div>";
+  echo "<h3>Stats:</h3>";
+  
+  echo "<div class='blackbox'><div class='title'>Popularity:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$poprateB[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Winrate:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$winrateB[$a]}</div></div>";
+  echo "<div class='blackbox'><div class='title'>Average DPS:</div> <div class='desc'>5.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.14</div><div class='stats'>{$dpsB[$a]}</div></div>";
+  echo "</div>";
+  
+}
   
 }
 
@@ -107,7 +144,7 @@ if (array_key_exists($a, $items)) {
   echo "<h2>Boots Overview</h2>";
   echo "<table>";
   
-  echo "<thead><tr><td></td><td>Item</td><td colspan=\"3\">Popularity</td><td colspan=\"3\">Winrate</td><td colspan=\"3\">DPS</td></tr>
+  echo "<thead><tr><td></td><td>Item</td><td colspan=\"3\">Popularity</td><td colspan=\"3\">Winrate (on Mages)</td><td colspan=\"3\">DPS</td></tr>
                <tr><td></td><td></td><td>5.11</td><td></td><td>5.14</td><td>5.11</td><td></td><td>5.14</td><td>5.11</td><td></td><td>5.14</td></tr></thead>";
                
   foreach ($boots as $k=>$i) {
