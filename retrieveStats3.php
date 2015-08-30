@@ -1,5 +1,7 @@
 <?php
 
+header("Content-type: text/plain");
+
 set_time_limit(0);
 
 $champsX = Array(103=>"Ahri",84=>"Akali",34=>"Anivia",1=>"Annie",268=>"Azir",432=>"Bard",53=>"Blitzcrank",63=>"Brand",69=>"Cassiopeia",31=>"Chogath",42=>"Corki",131=>"Diana",245=>"Ekko",60=>"Elise",28=>"Evelynn",81=>"Ezreal",9=>"FiddleSticks",105=>"Fizz",3=>"Galio",79=>"Gragas",74=>"Heimerdinger",43=>"Karma",30=>"Karthus",38=>"Kassadin",55=>"Katarina",10=>"Kayle",85=>"Kennen",96=>"KogMaw",7=>"Leblanc",127=>"Lissandra",117=>"Lulu",99=>"Lux",54=>"Malphite",90=>"Malzahar",82=>"Mordekaiser",25=>"Morgana",76=>"Nidalee",61=>"Orianna",78=>"Poppy",68=>"Rumble",13=>"Ryze",35=>"Shaco",27=>"Singed",37=>"Sona",50=>"Swain",134=>"Syndra",17=>"Teemo",23=>"Tryndamere",4=>"TwistedFate",45=>"Veigar",161=>"Velkoz",112=>"Viktor",8=>"Vladimir",101=>"Xerath",115=>"Ziggs",26=>"Zilean",143=>"Zyra");
@@ -45,6 +47,7 @@ if ($itemType == 3) $items = Array(3105,3102,3026,3156,3139,3222,3065,3001,3174)
 
 $win = ($winReq) ? $pStats["winner"] : 1;
 
+//if (isset($pStats["totalDamageDealtToChampions"]) && isset($dps)) echo $pStats["totalDamageDealtToChampions"] . "/" . $dps + "\r\n";
 
 if ($champ && (in_array($pStats["item0"], $items) || in_array($pStats["item1"], $items) || in_array($pStats["item2"], $items) || in_array($pStats["item3"], $items) || in_array($pStats["item4"], $items) || in_array($pStats["item5"], $items))) {
   if ($dps) return $pStats["totalDamageDealtToChampions"]/$dps;
@@ -54,8 +57,22 @@ if ($champ && (in_array($pStats["item0"], $items) || in_array($pStats["item1"], 
 }
 $item = false;
 
+if ($winReq == false && $champ == false && $dps == false) {
+
+$pItems = Array($pStats["item0"], $pStats["item1"], $pStats["item2"], $pStats["item3"], $pStats["item4"], $pStats["item5"]);
+$mage = array_intersect($pItems, $apitems);
+if (count($mage) > 0) {
+
+  $cut = array_intersect(array_intersect($pItems, $items), Array($id));
+  
+  return count($cut);
+
+} else return -1;
+}
+
 if ((count(array_intersect(Array($pStats["item0"], $pStats["item1"], $pStats["item2"], $pStats["item3"], $pStats["item4"], $pStats["item5"]), $apitems)) >= 1 || $itemType != 2) && $pStats["item0"] == $id || $pStats["item1"] == $id || $pStats["item2"] == $id || $pStats["item3"] == $id || $pStats["item4"] == $id || $pStats["item5"] == $id) $item = true;
 if ($item && $dps) return $pStats["totalDamageDealtToChampions"]/$dps;
+else if ($dps) return -1;
 if ($item) return $win;
 
 if ($winReq) return -1;
@@ -75,8 +92,8 @@ function addStat($stat, &$var, $key, &$champReset = 2) {
 }
 ///////////////////////////////////////////////////////////////////////
 
-$dir1 = "../json/5.11tmp/";
-$dir2 = "../json/5.14tmp/";
+$dir1 = "../json/5.11/";
+$dir2 = "../json/5.14/";
 
 foreach ($champsX as $ch) {
   $winrateC[1][$ch] = $winrateC[2][$ch] = $poprateC[1][$ch] = $poprateC[2][$ch] = 0;
@@ -439,7 +456,7 @@ $arrNdpsMR = $dpsMR[0];
 
 ////////////////////////////////////////////////////////////
 
-header("Content-type: text/plain");
+//header("Content-type: text/plain");
 
 function makeText($arr1, $arr2, $type = 1) {
 
